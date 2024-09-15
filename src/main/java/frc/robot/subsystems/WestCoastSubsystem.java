@@ -27,7 +27,7 @@ public class WestCoastSubsystem extends SubsystemBase {
       , WestCoastConstants.leftForwardModuleReserve
       , WestCoastConstants.leftBackModuleReserve);
 
-      drive = new DifferentialDrive(rightWestCoastModule.getForwardMotor(), leftWestCoastModule.getForwardMotor());
+      drive = new DifferentialDrive(leftWestCoastModule.getForwardMotor(), rightWestCoastModule.getForwardMotor());
   }
 
 
@@ -38,13 +38,5 @@ public class WestCoastSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("RightFowardPosition", rightWestCoastModule.getFowardRelativePosition());
-    SmartDashboard.putNumber("RightBackPosition", rightWestCoastModule.getBackRelativePosition());
-    SmartDashboard.putNumber("LeftFowardPosition", leftWestCoastModule.getFowardRelativePosition());
-    SmartDashboard.putNumber("leftBackPosition", leftWestCoastModule.getBackRelativePosition());
-    SmartDashboard.putNumber("RightFowardVelocity", rightWestCoastModule.getForwardVelocity());
-    SmartDashboard.putNumber("RightBackVelocity", rightWestCoastModule.getBackVelocity());
-    SmartDashboard.putNumber("LeftForwardPosition", leftWestCoastModule.getForwardVelocity());
-    SmartDashboard.putNumber("LeftBackVelocity", leftWestCoastModule.getBackVelocity());
   }
 }

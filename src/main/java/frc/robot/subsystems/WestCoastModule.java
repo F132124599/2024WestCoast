@@ -4,6 +4,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.MotorTypeValue;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -15,50 +19,26 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class WestCoastModule extends SubsystemBase {
   /** Creates a new WestCoastModule. */
-  private final CANSparkMax forwardMotor;
-  private final CANSparkMax backMotor;
+  private final WPI_VictorSPX forwardMotor;
+  private final WPI_VictorSPX backMotor;
 
-  private final RelativeEncoder forwardMotorEncoder;
-  private final RelativeEncoder backMotorEncoder;
   public WestCoastModule(int forwardMotor_ID, int backMotor_ID, boolean forwardMotorReserve, boolean backMotorReserve) {
-    forwardMotor = new CANSparkMax(forwardMotor_ID, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
-    backMotor = new CANSparkMax(backMotor_ID, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
+    forwardMotor = new WPI_VictorSPX(forwardMotor_ID);
+    backMotor = new WPI_VictorSPX(backMotor_ID);
 
+    
     backMotor.follow(forwardMotor);
 
-    forwardMotorEncoder = forwardMotor.getEncoder();
-    backMotorEncoder = backMotor.getEncoder();
-
-    forwardMotor.restoreFactoryDefaults();
-    backMotor.restoreFactoryDefaults();
-
-    forwardMotor.setIdleMode(IdleMode.kBrake);
-    backMotor.setIdleMode(IdleMode.kBrake);
+    forwardMotor.setNeutralMode(NeutralMode.Brake);
+    backMotor.setNeutralMode(NeutralMode.Coast);
 
     forwardMotor.setInverted(forwardMotorReserve);
     backMotor.setInverted(backMotorReserve);
 
-    forwardMotor.burnFlash();
-    backMotor.burnFlash();
   }
 
-  public double getFowardRelativePosition() {
-    return forwardMotorEncoder.getPosition();//幾圈
-  }
 
-  public double getForwardVelocity() {
-    return forwardMotorEncoder.getVelocity();//Rpm
-  }
-
-  public double getBackRelativePosition() {
-    return backMotorEncoder.getPosition();//幾圈
-  }
-
-  public double getBackVelocity() {
-    return backMotorEncoder.getVelocity();//Rpm
-  }
-
-  public CANSparkMax getForwardMotor() {
+  public WPI_VictorSPX getForwardMotor() {
     return forwardMotor;
   }
 

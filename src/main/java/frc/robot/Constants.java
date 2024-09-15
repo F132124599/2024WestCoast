@@ -18,10 +18,10 @@ public final class Constants {
   }
 
   public static class WestCoastConstants {
-    public static final int rightForwardModule_ID = 0;
-    public static final int rightBackModule_ID = 0;
-    public static final int leftForwardModule_ID = 0;
-    public static final int leftBackModule_ID = 0;
+    public static final int rightForwardModule_ID = 4;
+    public static final int rightBackModule_ID = 8;
+    public static final int leftForwardModule_ID = 2;
+    public static final int leftBackModule_ID = 3;
 
     public static final boolean rightForwardModuleReserve = true;
     public static final boolean rightBackModuleReserve = true;

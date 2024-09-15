@@ -49,9 +49,8 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     DoubleSupplier ySpeedFunc = ()-> baseJoystick.getY();
     DoubleSupplier zSpeedFunc = ()-> baseJoystick.getZ();
-
     
-    BooleanSupplier isSlow = ()-> baseJoystick.getRawButton(0);
+    BooleanSupplier isSlow = ()-> baseJoystick.getRawButton(1);
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_WestCoastSubsystem.setDefaultCommand(new ManualDrive(m_WestCoastSubsystem, ySpeedFunc, zSpeedFunc, isSlow));

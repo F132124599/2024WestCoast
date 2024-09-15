@@ -47,8 +47,8 @@ public class ManualDrive extends Command {
       ySpeed = ySpeed*0.4;
       zSpeed = zSpeed*0.4;
     }else {
-      ySpeed = ySpeed*0.8;
-      zSpeed = zSpeed*0.8;
+      ySpeed = ySpeed*0.6;
+      zSpeed = zSpeed*0.6;
     }
     m_WestCoastSubsystem.manulDrive(ySpeed, zSpeed);
   }
